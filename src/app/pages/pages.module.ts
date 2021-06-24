@@ -5,6 +5,7 @@ import { PagesComponent } from './pages.component';
 import { PagesRoutingModule } from '../pages/pages-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -17,7 +18,8 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     PagesRoutingModule,
     SharedModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   exports: [
     PagesComponent

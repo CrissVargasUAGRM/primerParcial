@@ -7,9 +7,28 @@ body {
     margin: 0 !important;
     padding: 0 !important;
     min-height: 100vh !important;
+    margin-bottom: 100px;
 }
 
 body {
     background: rgb(2, 0, 36);
     background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(79, 79, 246, 1) 100%);
+}
+
+footer {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+}
+
+#chat-mensajes {
+    height: 300px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    overflow-y: scroll;
+}
+
+.chat-input {
+    margin-top: 10px;
 }
