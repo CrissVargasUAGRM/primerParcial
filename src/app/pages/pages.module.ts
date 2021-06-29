@@ -6,13 +6,17 @@ import { PagesRoutingModule } from '../pages/pages-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { RoomComponent } from './room/room.component';
+import { DiagramComponent } from './diagram/diagram.component';
 
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    PagesComponent
+    PagesComponent,
+    RoomComponent,
+    DiagramComponent
   ],
   imports: [
     CommonModule,

@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import * as go from "gojs";
 
 @Component({
   selector: 'app-pages',
@@ -6,8 +7,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
   styleUrls: ['./pages.component.css']
 })
 export class PagesComponent implements OnInit {
-
-
 
   constructor() { }
 

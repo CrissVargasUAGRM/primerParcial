@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { WebSocketService } from "../../services/web-socket.service";
 import { ChatService } from '../../services/chat.service';
 import { Subscription } from "rxjs";
 

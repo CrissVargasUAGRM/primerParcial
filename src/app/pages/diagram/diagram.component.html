@@ -1,0 +1,19 @@
+<div id="diagramsPanel">
+    <div #paletteDiv id="paletteDiv"></div>
+    <div #diagramDiv id="diagramDiv"></div>
+</div>
+<div class="buttons">
+    <button class="btn btn-info m-2" (click)="save()">Guardar</button>
+    <button class="btn btn-primary m-2" (click)="load()">Cargar</button>
+</div>
+<div class="container">
+    <textarea id="mySavedModel" style="width:100%;height:300px" [hidden]="true">
+      { "class": "go.GraphLinksModel",
+      "linkFromPortIdProperty": "fromPort",
+      "linkToPortIdProperty": "toPort",
+      "nodeDataArray": [
+     ],
+      "linkDataArray": [
+     ]}
+  </textarea>
+</div>

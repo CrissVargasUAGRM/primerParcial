@@ -1,0 +1,30 @@
+#diagramsPanel {
+    width: 100%;
+    white-space: nowrap;
+    justify-content: space-between;
+}
+
+#diagramDiv {
+    border: 2px solid lightgreen;
+    /*border-left: 4px solid lightgreen;*/
+    display: inline-block;
+    vertical-align: top;
+    width: 84%;
+    height: 550px;
+    background: whitesmoke;
+}
+
+#paletteDiv {
+    border: 2px solid lightgreen;
+    display: inline-block;
+    vertical-align: top;
+    width: 13%;
+    height: 550px;
+    /*padding-top: 100px;*/
+    background: whitesmoke;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}

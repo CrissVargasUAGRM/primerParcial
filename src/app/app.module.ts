@@ -10,6 +10,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { SocketIoModule, SocketIoConfig } from "ngx-socket-io";
 import { FormsModule } from '@angular/forms';
 
+import { GojsAngularModule } from "gojs-angular";
+
 const config: SocketIoConfig = {
   url: 'http://localhost:3000',
   options: {
@@ -28,7 +30,8 @@ const config: SocketIoConfig = {
     AuthRoutingModule,
     HttpClientModule,
     FormsModule,
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+    GojsAngularModule
   ],
   providers: [],
   bootstrap: [AppComponent]
