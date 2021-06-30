@@ -1,0 +1,5 @@
+.diagram {
+    height: 470px;
+    display: grid;
+    grid-template-columns: 3fr 3fr;
+}

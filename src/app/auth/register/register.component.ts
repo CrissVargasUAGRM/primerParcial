@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '../models/user.model';
 import { UserService } from '../services/user.service';
+import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy {
 
   form: FormGroup;
   loading = false;
@@ -17,12 +19,19 @@ export class RegisterComponent implements OnInit {
   constructor(
     private formRegister: FormBuilder,
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private toast: ToastrService
   ) {
     this.createForm();
    }
 
   ngOnInit(): void {
+  }
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    
   }
 
   createForm(): void {
@@ -52,8 +61,9 @@ export class RegisterComponent implements OnInit {
         this.loading = false;
         this.router.navigateByUrl('/client/home');
       });
+      this.toast.success('Bienvenido!');
     }else{
-
+      console.log('Formulario no valido!!!')
     }
     this.form.reset();
   }

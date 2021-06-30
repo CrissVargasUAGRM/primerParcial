@@ -1,5 +1,9 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, OnInit, ViewChild } from '@angular/core';
+import { DiagramService } from "../../services/diagram.service";
 import * as go from "gojs";
+import { Subscription } from 'rxjs';
+import { ToastrService } from "ngx-toastr";
+import { Router } from '@angular/router';
 
 const $ = go.GraphObject.make;
 
@@ -8,33 +12,34 @@ const $ = go.GraphObject.make;
   templateUrl: './diagram.component.html',
   styleUrls: ['./diagram.component.css']
 })
-export class DiagramComponent implements OnInit {
+export default class DiagramComponent implements OnInit {
 
   public diagram: go.Diagram = new go.Diagram();
   public palette: go.Palette = new go.Palette();
-/*   public MiFormulario: any = {
-    "class": "go.GraphLinksModel",
-    "linkFromPortIdProperty": "fromPort",
-    "linkToPortIdProperty": "toPort",
-    "nodeDataArray": [
-   ],
-    "linkDataArray": [
-   ]
-  }; */
 
   @Input()
   public model: go.Model;
 
-  constructor() {
-   }
+  dataSubscription: Subscription;
+
+  @HostListener('document:click', ['$event'])
+  onClick(e: any){
+    this.sendData();
+  }
+
+  constructor(
+    public diagramServices: DiagramService,
+    private toast: ToastrService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.iniciar();
+    this.getData();
+    //this.getDiagrams();
   }
 
   ngAfterViewInit(): void {
-/*     this.diagram = $(go.Diagram, 'diagramDiv');
-    this.palette = $(go.Palette, 'paletteDiv'); */
   }
 
   iniciar(){
@@ -124,11 +129,6 @@ export class DiagramComponent implements OnInit {
               },
               new go.Binding("text").makeTwoWay())
           ),
-          // four small named ports, one on each side:
-  /*         makePort("T", go.Spot.Top, false, true),
-          makePort("L", go.Spot.Left, true, true),
-          makePort("R", go.Spot.Right, true, true),
-          makePort("B", go.Spot.Bottom, true, false), */
           { // handle mouse enter/leave events to show/hide the ports
             mouseEnter: function(e, node) { showSmallPorts(node, true); },
             mouseLeave: function(e, node) { showSmallPorts(node, false); }
@@ -219,7 +219,7 @@ export class DiagramComponent implements OnInit {
         { text: "Comentario", figure: "RoundedRectangle","size":"115 50", fill: "lightyellow" }
       ], [
           // the Palette also has a disconnected Link, which the user can drag-and-drop
-          { points: new go.List(/*go.Point*/).addAll([new go.Point(0, 0), new go.Point(30, 0), new go.Point(30, 40), new go.Point(60, 40)]) }
+          //{ points: new go.List(/*go.Point*/).addAll([new go.Point(0, 0), new go.Point(30, 0), new go.Point(30, 40), new go.Point(60, 40)]) }
         ])
     });
   }
@@ -228,11 +228,16 @@ export class DiagramComponent implements OnInit {
     this.saveDiagramProperties();
     console.log(this.diagram.model.toJson());
     this.diagram.isModified = false;
+
   }
 
-  load(){
-    console.log(this.diagram.model.toJson());
+  load(diagramData: any){
+    //console.log('recargar diagrama');
+    //console.log(this.diagram.model.toJson());
+    this.diagram.model = go.Model.fromJson(diagramData);
+    this.diagram.animationManager.initialAnimationStyle = go.AnimationManager.None;
     this.loadDiagramProperties();
+
   }
 
   saveDiagramProperties(){
@@ -244,7 +249,27 @@ export class DiagramComponent implements OnInit {
     if(pos){
       this.diagram.initialPosition = go.Point.parse(pos);
     }
-    console.log(pos);
   }
+
+  //hacemos uso de los sockets para enviar y recibir datos
+  sendData(){
+    this.diagramServices.sendData(this.diagram.model.toJson());
+    //console.log(this.save())
+  }
+
+  getData(){
+    this.dataSubscription = this.diagramServices.getData().subscribe(data => {
+      this.load(data);
+    });
+  }
+
+  guardarDiagram(){
+    const coorDiagram = JSON.stringify(this.diagram.model.toJson());
+    this.diagramServices.saveDiagram(coorDiagram).subscribe((res: any) => {
+      this.toast.success('Guardado con exito!');
+    });
+    //localStorage.setItem('datos', JSON.stringify(this.diagram.model.toJson()));
+  }
+
 
 }

@@ -1,12 +1,19 @@
-<h1>Mensajes</h1>
-<hr>
-
-<div id="chat-mensajes">
-    <li class="list-group-item" *ngFor="let msg of mensajes">
-        {{msg.de}}: {{msg.cuerpo}}
-    </li>
+<div class="container m-2 diagram">
+    <h1>Bienvenido! Instrucciones:</h1>
+    <div class="container">
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-dark">
+                <p>Unete a la sala, elabora un diagrama.</p>
+            </li>
+            <li class="list-group-item list-group-item-dark">
+                <p>Los componentes se arrastran y se sueltan.</p>
+            </li>
+            <li class="list-group-item list-group-item-dark">Puedes guardar el diagrama.</li>
+            <li class="list-group-item list-group-item-dark">Puede cargar los daigramas que esten almacenados</li>
+            <li class="list-group-item list-group-item-dark">
+                <h3>Unete a la sala unica!</h3>
+                <a class="btn btn-success" href="/client/room">Ingresar</a>
+            </li>
+        </ul>
+    </div>
 </div>
-
-<form (ngSubmit)="enviar()">
-    <input type="text" [(ngModel)]="texto" class="form-control chat-input" name="texto" placeholder="Mensaje..." autofocus autocomplete="off">
-</form>

@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ChatService } from '../../services/chat.service';
 import { Subscription } from "rxjs";
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -15,17 +16,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   elemento: HTMLElement;
 
   constructor(
-    public chatServices: ChatService
+    private router: Router,
+    private toast: ToastrService
   ) { }
 
   ngOnInit(): void {
-    this.mensajesSubscription = this.chatServices.getMessage().subscribe(msg => {
-      console.log(msg);
-      this.mensajes.push(msg);
-      setTimeout(() => {
-        this.elemento.scrollTop = this.elemento.scrollHeight;
-      }, 50);
-    });
   }
 
   ngOnDestroy(): void {
@@ -34,13 +29,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.mensajesSubscription.unsubscribe();
   }
 
-  enviar(){
-    if(this.texto.trim().length == 0){
-      return;
-    }
-
-    this.chatServices.sendMessage(this.texto);
-    this.texto = '';
+  joinRoom(){
+    this.router.navigateByUrl('/client/room');
+    this.toast.success('Ingresaste a la sala!');
   }
 
 }

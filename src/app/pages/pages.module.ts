@@ -7,7 +7,8 @@ import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { RoomComponent } from './room/room.component';
-import { DiagramComponent } from './diagram/diagram.component';
+import DiagramComponent from './diagram/diagram.component';
+import { LoadDiagramComponent } from './load-diagram/load-diagram.component';
 
 
 
@@ -16,7 +17,8 @@ import { DiagramComponent } from './diagram/diagram.component';
     HomeComponent,
     PagesComponent,
     RoomComponent,
-    DiagramComponent
+    DiagramComponent,
+    LoadDiagramComponent
   ],
   imports: [
     CommonModule,

@@ -10,6 +10,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { SocketIoModule, SocketIoConfig } from "ngx-socket-io";
 import { FormsModule } from '@angular/forms';
 
+import { ToastrModule } from "ngx-toastr";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+
 import { GojsAngularModule } from "gojs-angular";
 
 const config: SocketIoConfig = {
@@ -31,7 +34,9 @@ const config: SocketIoConfig = {
     HttpClientModule,
     FormsModule,
     SocketIoModule.forRoot(config),
-    GojsAngularModule
+    GojsAngularModule,
+    ToastrModule.forRoot({ positionClass: 'toast-top-right', timeOut: 1000 }),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

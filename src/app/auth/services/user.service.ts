@@ -27,6 +27,8 @@ export class UserService {
       username,
       password
     };
-    return this.http.post(`${this.urldev}/api/singin`, credentials);
+    return this.http.post(`${this.urldev}/api/singin`, credentials).pipe(catchError(e => {
+      return throwError(e);
+    }));
   }
 }
