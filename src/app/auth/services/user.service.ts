@@ -19,7 +19,7 @@ export class UserService {
   ) { }
 
   createUser(user: User){
-    return this.http.post(`${this.urldev}/api/singup`, user);
+    return this.http.post(`${this.url}/api/singup`, user);
   }
 
   loginUser(username: string, password:string){
@@ -27,7 +27,7 @@ export class UserService {
       username,
       password
     };
-    return this.http.post(`${this.urldev}/api/singin`, credentials).pipe(catchError(e => {
+    return this.http.post(`${this.url}/api/singin`, credentials).pipe(catchError(e => {
       return throwError(e);
     }));
   }

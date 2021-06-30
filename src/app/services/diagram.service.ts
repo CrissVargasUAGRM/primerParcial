@@ -32,10 +32,10 @@ export class DiagramService {
     const diagram: Diagram = {
       diagram: coord
     }
-    return this.http.post(`${this.urlDev}/api/saveDiagram`, diagram);
+    return this.http.post(`${this.url}/api/saveDiagram`, diagram);
   }
 
   getDiagrams(){
-    return this.http.get(`${this.urlDev}/api/diagram`);
+    return this.http.get(`${this.url}/api/diagram`);
   }
 }

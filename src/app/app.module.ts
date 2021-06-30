@@ -16,7 +16,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { GojsAngularModule } from "gojs-angular";
 
 const config: SocketIoConfig = {
-  url: 'http://localhost:3000',
+  url: 'https://primerparcialapi.herokuapp.com',
   options: {
     transports: ['websocket', 'polling']
   }
