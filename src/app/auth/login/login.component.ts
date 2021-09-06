@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
     private formLogin: FormBuilder,
     private userService: UserService,
     private router: Router,
-    private toast: ToastrService
+    private toast: ToastrService 
   ) {
     this.createForm()
   }

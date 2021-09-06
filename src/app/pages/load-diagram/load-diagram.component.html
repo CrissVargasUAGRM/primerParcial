@@ -1,5 +1,6 @@
+<p class="text-gray-900 m-1">Los diagramas mas recientes estan al final:</p>
 <ul class="list-group">
-    <li class="list-group-item border-dark" *ngFor="let diagrama of coordenadas; let i = index">
+    <li class="list-group-item border-dark mb-2 ml-2 mr-2" *ngFor="let diagrama of coordenadas; let i = index">
         <p>Elemento guardado</p>
 
         <button class="btn btn-info" (click)="loadDiagram(i)">Cargar</button>

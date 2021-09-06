@@ -1,10 +1,9 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from '@angular/core';
-import { User } from '../models/user.model';
-import { environment } from "../../../environments/environment.prod";
-import * as devEnv from "../../../environments/environment";
-import { catchError } from "rxjs/operators";
 import { throwError } from "rxjs";
+import { catchError } from "rxjs/operators";
+import { environment } from "../../../environments/environment.prod";
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +11,7 @@ import { throwError } from "rxjs";
 export class UserService {
 
   private url = environment.baseURL;
-  private urldev = devEnv.environment.basuURLdev;
+  //private url = dev.basuURLdev;
 
   constructor(
     private http: HttpClient

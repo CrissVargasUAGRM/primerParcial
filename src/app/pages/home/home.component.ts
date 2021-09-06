@@ -10,13 +10,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit, OnDestroy {
 
-  mensajesSubscription: Subscription;
-  texto: string;
-  mensajes: any[] = [];
-  elemento: HTMLElement;
-
   constructor(
-    private router: Router,
     private toast: ToastrService
   ) { }
 
@@ -24,13 +18,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    //Called once, before the instance is destroyed.
-    //Add 'implements OnDestroy' to the class.
-    this.mensajesSubscription.unsubscribe();
   }
 
   joinRoom(){
-    this.router.navigateByUrl('/client/room');
     this.toast.success('Ingresaste a la sala!');
   }
 

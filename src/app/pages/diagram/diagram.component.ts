@@ -21,16 +21,20 @@ export default class DiagramComponent implements OnInit {
   public model: go.Model;
 
   dataSubscription: Subscription;
+  diagramInit = "{ \"class\": \"GraphLinksModel\",\n  \"nodeDataArray\": [],\n  \"linkDataArray\": []}";
 
   @HostListener('document:click', ['$event'])
   onClick(e: any){
-    this.sendData();
+    if(this.diagram.isModified){
+      this.sendData();
+    }else{
+      this.diagram.isModified = false;
+    }
   }
 
   constructor(
     public diagramServices: DiagramService,
-    private toast: ToastrService,
-    private router: Router
+    private toast: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -226,7 +230,7 @@ export default class DiagramComponent implements OnInit {
 
   save(){
     this.saveDiagramProperties();
-    console.log(this.diagram.model.toJson());
+    //console.log(this.diagram.model.toJson());
     this.diagram.isModified = false;
 
   }
@@ -269,6 +273,10 @@ export default class DiagramComponent implements OnInit {
       this.toast.success('Guardado con exito!');
     });
     //localStorage.setItem('datos', JSON.stringify(this.diagram.model.toJson()));
+  }
+
+  cleanDiagram(){
+    this.load(this.diagramInit);
   }
 
 

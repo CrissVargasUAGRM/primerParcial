@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     //Called once, before the instance is destroyed.
     //Add 'implements OnDestroy' to the class.
-    
+
   }
 
   createForm(): void {
@@ -58,10 +58,15 @@ export class RegisterComponent implements OnInit, OnDestroy {
       this.loading = true;
       this.userService.createUser(user).subscribe((res: any) => {
         localStorage.setItem('token', JSON.stringify(res.token));
+        localStorage.setItem('user', JSON.stringify(res.newUser.name));
         this.loading = false;
         this.router.navigateByUrl('/client/home');
+        this.toast.success('Bienvenido!');
+      }, error => {
+        this.loading = false;
+        this.toast.error(error.error.message);
       });
-      this.toast.success('Bienvenido!');
+
     }else{
       console.log('Formulario no valido!!!')
     }

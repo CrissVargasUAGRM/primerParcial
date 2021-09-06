@@ -1,7 +1,6 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { WebSocketService } from './web-socket.service';
 import { environment } from "../../environments/environment.prod";
-import * as devEnv from "../../environments/environment";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Diagram } from '../models/datos.model';
 
@@ -11,7 +10,6 @@ import { Diagram } from '../models/datos.model';
 export class DiagramService {
 
   private url = environment.baseURL;
-  private urlDev = devEnv.environment.basuURLdev;
 
   diagramEvent = new EventEmitter<Array<any>>();
 

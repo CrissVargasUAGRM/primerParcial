@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, ViewEncapsulation, EventEmitter } from '@angular/core';
+import * as login from '../../auth/login/login.component';
 import * as go from "gojs";
 
 const $ = go.GraphObject.make;
@@ -11,10 +12,16 @@ const $ = go.GraphObject.make;
 })
 export class RoomComponent implements OnInit {
 
+  nameUser: string = this.getName();
+
   constructor() { }
 
   ngOnInit(): void {
 
+  }
+
+  getName(){
+    return JSON.parse(localStorage.getItem('user') || '{}');
   }
 
 }

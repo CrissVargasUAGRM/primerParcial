@@ -22,7 +22,7 @@ export class LoadDiagramComponent implements OnInit {
   getDiagrams(){
     this.diagramServices.getDiagrams().subscribe((res: any) => {
       this.coordenadas = res;
-      console.log(res);
+      //console.log(res);
     });
   }
 

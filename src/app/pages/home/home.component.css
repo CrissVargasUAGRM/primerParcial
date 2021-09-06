@@ -1,5 +1,7 @@
 .diagram {
     height: 100%;
-    display: grid;
-    grid-template-columns: 3fr 3fr;
+}
+
+.diagram>img {
+    width: 50px;
 }

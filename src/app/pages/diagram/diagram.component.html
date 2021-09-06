@@ -3,10 +3,11 @@
         <div #paletteDiv id="paletteDiv"></div>
         <div #diagramDiv id="diagramDiv"></div>
     </div>
-    <div class="loadDiagram overflow-auto">
+    <div class="loadDiagram overflow-auto border border-success">
         <app-load-diagram></app-load-diagram>
     </div>
 </div>
 <div class="buttons">
     <button class="btn btn-info m-2" (click)="guardarDiagram()">Guardar</button>
+    <button class="btn btn-danger m-2" (click)="cleanDiagram()">Limpiar</button>
 </div>

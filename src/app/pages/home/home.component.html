@@ -1,7 +1,15 @@
-<div class="container m-2 diagram">
-    <h1>Bienvenido! Instrucciones:</h1>
-    <div class="container">
+<div class="container m-2 diagram d-flex align-self-stretch m-l-5">
+
+    <div>
+        <h1>Bienvenido!
+            <!-- <img src="../../../assets/diagram.PNG" alt="GOJS" class="m-5"> -->
+        </h1>
+    </div>
+
+    <div class="container mt-5 p-5 room">
+
         <ul class="list-group">
+
             <li class="list-group-item list-group-item-dark">
                 <p>Unete a la sala, elabora un diagrama.</p>
             </li>
@@ -9,11 +17,12 @@
                 <p>Los componentes se arrastran y se sueltan.</p>
             </li>
             <li class="list-group-item list-group-item-dark">Puedes guardar el diagrama.</li>
-            <li class="list-group-item list-group-item-dark">Puede cargar los daigramas que esten almacenados</li>
+            <li class="list-group-item list-group-item-dark">Puede cargar los diagramas que esten almacenados</li>
             <li class="list-group-item list-group-item-dark">
-                <h3>Unete a la sala unica!</h3>
-                <a class="btn btn-success" href="/client/room">Ingresar</a>
+                <h3>Unete a la sala!</h3>
+                <a class="btn btn-success" [routerLink]="['/client/room']" routerLinkActive="router-link-active">Ingresar</a>
             </li>
         </ul>
+
     </div>
 </div>
